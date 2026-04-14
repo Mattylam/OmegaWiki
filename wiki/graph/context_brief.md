@@ -2,11 +2,17 @@
 
 _Auto-generated compressed context. Do not edit._
 
-## Claims (1 total)
+## Claims (3 total)
+- [weakly_supported] Bootstrapping produces better few-shot demonstrations than hand-written examples (conf: 0.65)
 - [weakly_supported] Continual learning for LLM agents can be achieved via external memory evolution without parameter updates (conf: 0.65)
-## Papers (1 total)
+- [weakly_supported] Compiled DSPy programs outperform hand-crafted prompt chains (conf: 0.7)
+## Open Gaps
+_Auto-generated open questions. Do not edit._
+- [claim/continual-learning-via-external-memory] Continual learning for LLM agents can be achieved via external memory evolution without parameter updates (status: weakly_supported)
+## Papers (2 total)
+- [5] DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines (NLP)
 - [4] Memento-Skills: Let Agents Design Agents (NLP)
-## Recent Relationships (8 total)
+## Recent Relationships (21 total)
   papers/memento-skills-let-agents-design-agents --supports--> claims/continual-learning-via-external-memory
   papers/memento-skills-let-agents-design-agents --supports--> concepts/skill-memory
   papers/memento-skills-let-agents-design-agents --derived_from--> foundations/human-in-the-loop-learning
@@ -15,3 +21,5 @@ _Auto-generated compressed context. Do not edit._
   papers/memento-skills-let-agents-design-agents --derived_from--> foundations/retrieval-augmented-generation
   papers/memento-skills-let-agents-design-agents --derived_from--> foundations/react-prompting
   papers/memento-skills-let-agents-design-agents --derived_from--> foundations/prompt-optimization
+  papers/dspy-compiling-declarative-language-model-calls --supports--> claims/dspy-compiled-programs-outperform-hand-crafted-prompts
+  papers/dspy-compiling-declarative-language-model-calls --supports--> cl

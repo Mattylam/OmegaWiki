@@ -1,6 +1,11 @@
 # Wiki Index
 
 papers:
+  - slug: dspy-compiling-declarative-language-model-calls
+    title: "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines"
+    tags: [prompt-optimization, llm-programming, declarative-programming, llm-pipelines, bootstrapping, self-improving]
+    importance: 5
+    domain: NLP
   - slug: memento-skills-let-agents-design-agents
     title: "Memento-Skills: Let Agents Design Agents"
     tags: [llm-agents, continual-learning, skill-learning, self-evolving-agents, memory-based-rl, prompt-engineering, agentic-workflows]
@@ -8,20 +13,41 @@ papers:
     domain: NLP
 
 concepts:
+  - slug: bootstrap-dspy
+    title: "Bootstrap (DSPy)"
+    tags: [few-shot-learning, prompt-optimization, automated-example-selection, dspy]
+    maturity: emerging
+  - slug: dspy-signatures
+    title: "DSPy Signatures"
+    tags: [declarative-programming, llm-programming, prompt-engineering, dspy]
+    maturity: emerging
   - slug: skill-memory
     title: "Skill Memory"
     tags: [continual-learning, llm-agents, memory-based-rl, externalized-memory, prompt-engineering]
+    maturity: emerging
+  - slug: teleprompters
+    title: "Teleprompters"
+    tags: [prompt-optimization, compilation, llm-programming, dspy]
     maturity: emerging
 
 topics:
 
 people:
+  - slug: christopher-potts
+    tags: [nlp, computational-linguistics, llm-programming, foundation-models]
+    affiliation: "Stanford University"
   - slug: huichi-zhou
     tags: [llm-agents, continual-learning, memory-based-rl]
     affiliation: "University College London"
   - slug: jun-wang
     tags: [llm-agents, reinforcement-learning, multi-agent-systems]
     affiliation: "University College London"
+  - slug: matei-zaharia
+    tags: [ml-systems, data-systems, llm-infrastructure, dspy]
+    affiliation: "UC Berkeley (formerly Stanford / Databricks)"
+  - slug: omar-khattab
+    tags: [llm-programming, retrieval, prompt-optimization, dspy]
+    affiliation: "Stanford University"
   - slug: siyuan-guo
     tags: [llm-agents, case-based-reasoning, data-science-automation]
     affiliation: "Jilin University"
@@ -31,11 +57,23 @@ ideas:
 experiments:
 
 claims:
+  - slug: bootstrapping-produces-better-demonstrations-than-hand-written
+    title: "Bootstrapping produces better few-shot demonstrations than hand-written examples"
+    tags: [bootstrapping, few-shot-learning, prompt-optimization, automated-example-selection]
+    status: weakly_supported
+    confidence: 0.65
+    domain: NLP
   - slug: continual-learning-via-external-memory
     title: "Continual learning for LLM agents can be achieved via external memory evolution without parameter updates"
     tags: [continual-learning, llm-agents, memory-based-learning, frozen-llm, deployment-time-learning]
     status: weakly_supported
     confidence: 0.65
+    domain: NLP
+  - slug: dspy-compiled-programs-outperform-hand-crafted-prompts
+    title: "Compiled DSPy programs outperform hand-crafted prompt chains"
+    tags: [prompt-optimization, llm-programming, compilation, few-shot-learning]
+    status: weakly_supported
+    confidence: 0.7
     domain: NLP
 
 Summary:

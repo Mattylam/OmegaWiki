@@ -185,6 +185,11 @@
   },
   "active": "a99d72959ddffaf2",
   "lastOpenFiles": [
+    "people/matei-zaharia.md",
+    "people/christopher-potts.md",
+    "people/omar-khattab.md",
+    "concepts/bootstrap-dspy.md",
+    "concepts/teleprompters.md",
     "concepts/dspy-signatures.md",
     "claims/bootstrapping-produces-better-demonstrations-than-hand-written.md",
     "claims/dspy-compiled-programs-outperform-hand-crafted-prompts.md",
@@ -207,12 +212,7 @@
     "foundations/goodharts-law.md",
     "foundations/fine-tuning.md",
     "graph/open_questions.md",
-    "graph/context_brief.md",
-    "papers/memento-skills-let-agents-design-agents.md",
     "papers/Memento-Skills- Let Agents Design Agents.pdf",
-    "people/siyuan-guo.md",
-    "people/jun-wang.md",
-    "people/huichi-zhou.md",
     "graph/edges.jsonl"
   ]
 }
