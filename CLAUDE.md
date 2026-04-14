@@ -23,6 +23,7 @@ wiki/
 ├── claims/            ← testable research claims
 ├── Summary/           ← domain-wide surveys
 ├── foundations/       ← background knowledge (terminal: receives inward links, writes none)
+├── terminology/       ← glossary of generic vocabulary (terminal: adjectives, qualities, atomic terms)
 ├── outputs/           ← generated artifacts (Related Work, paper drafts)
 └── graph/             ← auto-generated (do not edit)
     ├── edges.jsonl    ← typed relationship graph
@@ -43,7 +44,7 @@ config/
 
 ---
 
-## 9 Page Types
+## 10 Page Types
 
 | Directory | Filename | Purpose |
 |-----------|----------|---------|
@@ -56,6 +57,7 @@ config/
 | `claims/` | `{claim-slug}.md` | testable research claim linking papers, experiments, and reviews |
 | `Summary/` | `{area-name}.md` | domain-wide survey |
 | `foundations/` | `{slug}.md` | foundational background concept (other pages link in; foundations write no reverse link) |
+| `terminology/` | `{slug}.md` | generic glossary term — adjective, quality, or vocabulary too thin for a full concept/foundation (terminal: no reverse link) |
 
 ---
 
@@ -89,6 +91,67 @@ When writing a forward link, **always write the reverse link simultaneously**:
 | experiments/E writes `target_claim: [[claim-C]]` | claims/C appends `{source: E, type: tested_by}` to `evidence` |
 | claims/C writes `source_papers: [[paper-P]]` | papers/P appends C to `## Related` |
 | any page links to `[[foundation-X]]` | **no reverse link** — foundations are terminal: they receive inward links from papers/concepts/etc. but never write `key_papers` or any back-reference field |
+| any page links to `[[term-X]]` | **no reverse link** — terminology pages are terminal: they are glossary entries and write no back-reference field |
+
+---
+
+## Obsidian Formatting
+
+All wiki pages are written in **Obsidian-flavored Markdown**. Follow these conventions:
+
+### Callout types
+
+Use Obsidian callouts (`> [!type]`) for sections that carry a specific semantic role. Callouts render as styled blocks in Obsidian and degrade gracefully to blockquotes in other renderers.
+
+| Callout type | Use for | Example sections |
+|---|---|---|
+| `> [!tip]` | Intuitive explanations, personal insights | Intuition, My take, My understanding, My position, My notes |
+| `> [!question]` | Open questions, knowledge gaps, research gaps | Open questions, Open problems, Research gaps |
+| `> [!warning]` | Limitations, risks, counter-evidence | Limitations, Known limitations, Risks, Counter-evidence |
+| `> [!info]` | Contextual notes, relevance, analysis | Relevance to active research, Analysis, Lessons learned, Conditions and scope |
+| `> [!example]` | Worked examples, formal notation | Formal notation (when illustrative) |
+| `> [!abstract]` | High-level summaries | Overview (in Summary pages), Statement (in claims) |
+| `> [!success]` | Validated results, positive evidence | Results (when successful), Pilot results |
+| `> [!failure]` | Failed experiments, negative results | Pilot results (when failed), failure_reason |
+
+### Callout syntax
+
+```markdown
+> [!tip] My take
+> This paper's main contribution is...
+> Second paragraph continues inside the callout.
+
+> [!warning] Known limitations
+> - Limitation one
+> - Limitation two
+```
+
+- The title after the callout type is **mandatory** — it replaces the `##` heading
+- Multi-paragraph content stays inside the `>` block
+- Lists, links, and math all work inside callouts
+- Use `> [!type]-` (with trailing dash) to make a callout **collapsed by default** — use sparingly, only for long supplementary content
+
+### Sections that stay as `##` headings
+
+Not every section becomes a callout. Factual, reference, and structural sections stay as regular `##` headings:
+
+- Definition, Method, Setup, Procedure, Key idea, Problem, Key variants, Variants, Comparison, When to use
+- Timeline, Seminal works, SOTA tracker, Key papers, Key people, Key references
+- Evidence summary, Linked ideas, Claim updates, Follow-up, Related
+- Collaborators, Research areas, Recent work, Core areas, Evolution, Current frontiers
+
+### Source attribution
+
+When content is derived from LLM knowledge rather than a cited source, mark it with an inline tag at the end of the relevant callout or paragraph:
+
+```markdown
+> [!tip] Intuition
+> Plain-language explanation here.
+>
+> *Source: LLM analysis*
+```
+
+Do **not** use `(LLM analysis)` inline within sentences. Place the attribution as an italic line at the end of the block.
 
 ---
 
@@ -115,7 +178,7 @@ cited_by: []
 ---
 ```
 
-Body sections: `## Problem` / `## Key idea` / `## Method` / `## Results` / `## Limitations` / `## Open questions` / `## My take` / `## Related`
+Body sections: `## Problem` / `## Key idea` / `## Method` / `## Results` / `> [!warning] Limitations` / `> [!question] Open questions` / `> [!tip] My take` / `## Related`
 
 ### concepts/{concept-name}.md
 
@@ -132,7 +195,7 @@ related_concepts: []
 ---
 ```
 
-Body sections: `## Definition` / `## Intuition` / `## Formal notation` / `## Variants` / `## Comparison` / `## When to use` / `## Known limitations` / `## Open problems` / `## Key papers` / `## My understanding`
+Body sections: `## Definition` / `> [!tip] Intuition` / `## Formal notation` / `## Variants` / `## Comparison` / `## When to use` / `> [!warning] Known limitations` / `> [!question] Open problems` / `## Key papers` / `> [!tip] My understanding`
 
 ### topics/{topic-name}.md
 
@@ -148,7 +211,7 @@ key_people: []
 ---
 ```
 
-Body sections: `## Overview` / `## Timeline` / `## Seminal works` / `## SOTA tracker` / `## Open problems` / `## My position` / `## Research gaps` / `## Key people`
+Body sections: `## Overview` / `## Timeline` / `## Seminal works` / `## SOTA tracker` / `> [!question] Open problems` / `> [!tip] My position` / `> [!question] Research gaps` / `## Key people`
 
 ### people/{firstname-lastname}.md
 
@@ -163,7 +226,7 @@ date_updated: YYYY-MM-DD
 ---
 ```
 
-Body sections: `## Research areas` / `## Key papers` / `## Recent work` / `## Collaborators` / `## My notes`
+Body sections: `## Research areas` / `## Key papers` / `## Recent work` / `## Collaborators` / `> [!tip] My notes`
 
 ### Summary/{area-name}.md
 
@@ -177,7 +240,7 @@ date_updated: YYYY-MM-DD
 ---
 ```
 
-Body sections: `## Overview` / `## Core areas` / `## Evolution` / `## Current frontiers` / `## Key references` / `## Related`
+Body sections: `> [!abstract] Overview` / `## Core areas` / `## Evolution` / `## Current frontiers` / `## Key references` / `## Related`
 
 ### foundations/{slug}.md
 
@@ -194,9 +257,30 @@ source_url: ""           # Wikipedia URL or empty
 ---
 ```
 
-Body sections: `## Definition` / `## Intuition` / `## Formal notation` / `## Key variants` / `## Known limitations` / `## Open problems` / `## Relevance to active research`
+Body sections: `## Definition` / `> [!tip] Intuition` / `## Formal notation` / `## Key variants` / `> [!warning] Known limitations` / `> [!question] Open problems` / `> [!info] Relevance to active research`
 
 Foundations have **no outward link fields** (no `key_papers`, no `related_concepts`). Other pages may link to a foundation; foundations write no reverse link.
+
+### terminology/{slug}.md
+
+```yaml
+---
+title: ""
+slug: ""
+aliases: []              # alias list (for dedup matching)
+domain: ""               # optional — leave empty if domain-agnostic
+date_updated: YYYY-MM-DD
+---
+```
+
+Body sections: `## Definition` / `## Context`
+
+Minimal by design. Use `terminology/` for generic vocabulary — adjectives (brittle, pervasive), qualities (granularity, modular), or atomic terms — that receive `[[term]]` links but do not justify a full `concepts/` or `foundations/` page. Like foundations, terminology pages are **terminal**: no outward link fields (no `key_papers`, no `related_concepts`), no reverse links.
+
+**When to use terminology vs foundations vs concepts:**
+- **`terminology/`** — the word itself is the content; no lineage to track. Examples: `brittle`, `modular`, `pervasive`, `granularity`
+- **`foundations/`** — settled textbook knowledge with substantial technical content. Examples: `fine-tuning`, `retrieval-augmented-generation`, `in-context-learning`
+- **`concepts/`** — active research direction whose definition evolves with new papers. Examples: `skill-memory`, `textual-gradient-descent`
 
 ### ideas/{idea-slug}.md
 
@@ -218,7 +302,7 @@ date_resolved: ""         # validated/failed date
 ---
 ```
 
-Body sections: `## Motivation` / `## Hypothesis` / `## Approach sketch` / `## Expected outcome` / `## Risks` / `## Pilot results` / `## Lessons learned`
+Body sections: `## Motivation` / `## Hypothesis` / `## Approach sketch` / `## Expected outcome` / `> [!warning] Risks` / `> [!success] Pilot results` / `> [!info] Lessons learned`
 
 ### experiments/{experiment-slug}.md
 
@@ -255,7 +339,7 @@ remote:                   # remote deployment info (written by /exp-run --env re
 ---
 ```
 
-Body sections: `## Objective` / `## Setup` / `## Procedure` / `## Results` / `## Analysis` / `## Claim updates` / `## Follow-up`
+Body sections: `## Objective` / `## Setup` / `## Procedure` / `## Results` / `> [!info] Analysis` / `## Claim updates` / `## Follow-up`
 
 ### claims/{claim-slug}.md
 
@@ -279,7 +363,7 @@ date_updated: YYYY-MM-DD
 ---
 ```
 
-Body sections: `## Statement` / `## Evidence summary` / `## Conditions and scope` / `## Counter-evidence` / `## Linked ideas` / `## Open questions`
+Body sections: `> [!abstract] Statement` / `## Evidence summary` / `> [!info] Conditions and scope` / `> [!warning] Counter-evidence` / `## Linked ideas` / `> [!question] Open questions`
 
 ### graph/ (auto-generated — do not edit)
 

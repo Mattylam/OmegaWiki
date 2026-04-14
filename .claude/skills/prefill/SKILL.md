@@ -68,7 +68,7 @@ python3 tools/fetch_wikipedia.py section "<title>" --index <N>   # for relevant 
 
 ### Step 4: Compose the foundation page
 
-Render each seed into the template below. Distinguish Wikipedia-derived content from LLM-supplied content by appending `(LLM analysis)` to sections that have no Wikipedia source material.
+Render each seed into the template below using Obsidian callout syntax as defined in CLAUDE.md's "Obsidian Formatting" section. For LLM-supplied content, add `*Source: LLM analysis*` as an italic line at the end of the callout block (not inline within sentences).
 
 ```yaml
 ---
@@ -85,23 +85,27 @@ source_url: "{wikipedia url, or empty if 404}"
 ## Definition
 {First paragraph of Wikipedia summary, or LLM-supplied definition.}
 
-## Intuition
-{Plain-language explanation built on the definition.}
+> [!tip] Intuition
+> {Plain-language explanation built on the definition.}
 
 ## Formal notation
-{Math/notation extracted from Wikipedia, or LLM-supplied with `(LLM analysis)` tag.}
+{Math/notation extracted from Wikipedia, or LLM-supplied.}
 
 ## Key variants
 {Bulleted list distilled from Wikipedia "Variants"/"Types"/"Architecture" sections.}
 
-## Known limitations
-{From Wikipedia + LLM judgment.}
+> [!warning] Known limitations
+> {From Wikipedia + LLM judgment.}
 
-## Open problems
-{LLM analysis (LLM analysis)}
+> [!question] Open problems
+> {LLM analysis}
+>
+> *Source: LLM analysis*
 
-## Relevance to active research
-{LLM analysis (LLM analysis)}
+> [!info] Relevance to active research
+> {LLM analysis}
+>
+> *Source: LLM analysis*
 ```
 
 Write each file to `wiki/foundations/{slug}.md`.
@@ -137,7 +141,7 @@ Remind the user that subsequent `/ingest` runs will dedup against these foundati
 
 - **foundations are terminal**: never write `key_papers`, `related_concepts`, or any outbound reference field on a foundation page. Other pages may link in.
 - **never overwrite** an existing `wiki/foundations/{slug}.md` (idempotent re-runs).
-- **distinguish sources**: Wikipedia-derived content vs. LLM-derived content must be visually distinct in the page body.
+- **distinguish sources**: Wikipedia-derived content vs. LLM-derived content must be visually distinct — use `*Source: LLM analysis*` at the end of callout blocks for LLM-supplied content.
 - **catalog is advisory**: the YAML seed list is hand-curated and incomplete. Users may extend it without code changes.
 - **only writes to `wiki/foundations/`**: never creates pages under `papers/`, `concepts/`, `topics/`, etc.
 

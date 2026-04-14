@@ -17,7 +17,7 @@ from __future__ import annotations
 ENTITY_DIRS = [
     "papers", "concepts", "topics", "people",
     "ideas", "experiments", "claims", "Summary",
-    "foundations",
+    "foundations", "terminology",
 ]
 
 # Typed graph edges (graph/edges.jsonl). New types must be added here AND
@@ -39,6 +39,7 @@ REQUIRED_FIELDS = {
     "experiments": ["title", "slug", "status", "target_claim", "hypothesis", "tags"],
     "claims": ["title", "slug", "status", "confidence", "tags", "source_papers", "evidence"],
     "foundations": ["title", "slug", "domain", "status"],
+    "terminology": ["title", "slug"],
 }
 
 # Valid enum values per entity-qualified field. Format: "{entity}.{field}".

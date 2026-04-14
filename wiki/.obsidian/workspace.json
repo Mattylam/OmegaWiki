@@ -1,0 +1,218 @@
+{
+  "main": {
+    "id": "a817fe04d271ce07",
+    "type": "split",
+    "children": [
+      {
+        "id": "64b61864c5d651ae",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a99d72959ddffaf2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "terminology/brittle.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "brittle"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "65e0f968de086007",
+    "type": "split",
+    "children": [
+      {
+        "id": "340912a33ebd318c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ad1527803d422e5c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "3b3f116da27ba716",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "20bc69585d5fc06c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b0189318a207be28",
+    "type": "split",
+    "children": [
+      {
+        "id": "eeb6e8f6362c64cb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6bd05035701d8c41",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "terminology/brittle.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for brittle"
+            }
+          },
+          {
+            "id": "c694998ba8f17839",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "terminology/brittle.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from brittle"
+            }
+          },
+          {
+            "id": "316cf3940f2d3e6a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "e88aaa113c23f59d",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "404100601ecff31d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "terminology/brittle.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of brittle"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "a99d72959ddffaf2",
+  "lastOpenFiles": [
+    "concepts/dspy-signatures.md",
+    "claims/bootstrapping-produces-better-demonstrations-than-hand-written.md",
+    "claims/dspy-compiled-programs-outperform-hand-crafted-prompts.md",
+    "papers/dspy-compiling-declarative-language-model-calls.md",
+    "foundations/mode-collapse.md",
+    "foundations/scratchpad.md",
+    "terminology/brittle.md",
+    "foundations/ordinal-ranking.md",
+    "foundations/pearson-correlation.md",
+    "foundations/spearmans-rho.md",
+    "foundations/kendalls-tau.md",
+    "foundations/retrieval-augmented-generation.md",
+    "foundations/evaluator-collusion.md",
+    "foundations/adversarial-response.md",
+    "concepts/skill-memory.md",
+    "terminology/granularity.md",
+    "terminology/pervasive.md",
+    "terminology/modular.md",
+    "terminology",
+    "foundations/goodharts-law.md",
+    "foundations/fine-tuning.md",
+    "graph/open_questions.md",
+    "graph/context_brief.md",
+    "papers/memento-skills-let-agents-design-agents.md",
+    "papers/Memento-Skills- Let Agents Design Agents.pdf",
+    "people/siyuan-guo.md",
+    "people/jun-wang.md",
+    "people/huichi-zhou.md",
+    "graph/edges.jsonl"
+  ]
+}
