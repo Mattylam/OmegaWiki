@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "terminology/brittle.md",
+                "file": "ideas/decomposed-reference-based-golden-evaluator.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "brittle"
+              "title": "decomposed-reference-based-golden-evaluator"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "terminology/brittle.md",
+                "file": "ideas/decomposed-reference-based-golden-evaluator.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for brittle"
+              "title": "Backlinks for decomposed-reference-based-golden-evaluator"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "terminology/brittle.md",
+                "file": "ideas/decomposed-reference-based-golden-evaluator.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from brittle"
+              "title": "Outgoing links from decomposed-reference-based-golden-evaluator"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "terminology/brittle.md",
+                "file": "ideas/decomposed-reference-based-golden-evaluator.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of brittle"
+              "title": "Outline of decomposed-reference-based-golden-evaluator"
             }
           }
         ]
@@ -185,33 +185,33 @@
   },
   "active": "a99d72959ddffaf2",
   "lastOpenFiles": [
-    "people/matei-zaharia.md",
-    "people/christopher-potts.md",
-    "people/omar-khattab.md",
-    "concepts/bootstrap-dspy.md",
-    "concepts/teleprompters.md",
-    "concepts/dspy-signatures.md",
-    "claims/bootstrapping-produces-better-demonstrations-than-hand-written.md",
-    "claims/dspy-compiled-programs-outperform-hand-crafted-prompts.md",
-    "papers/dspy-compiling-declarative-language-model-calls.md",
-    "foundations/mode-collapse.md",
-    "foundations/scratchpad.md",
+    "ideas/golden-evaluator-calibration-baseline.md",
+    "ideas/decomposed-reference-based-golden-evaluator.md",
+    "ideas/pairwise-preference-feedback-prompt-refiner.md",
+    "ideas/per-case-smt-routed-correctness-branch.md",
+    "ideas/taxonomic-feedback-prompt-refiner.md",
+    "papers/am-more-pointwise-pairwise-revealing-position.md",
+    "foundations/natural-language-inference.md",
+    "foundations/react-prompting.md",
+    "concepts/atomic-fact-decomposition.md",
     "terminology/brittle.md",
-    "foundations/ordinal-ranking.md",
-    "foundations/pearson-correlation.md",
-    "foundations/spearmans-rho.md",
-    "foundations/kendalls-tau.md",
-    "foundations/retrieval-augmented-generation.md",
-    "foundations/evaluator-collusion.md",
-    "foundations/adversarial-response.md",
-    "concepts/skill-memory.md",
-    "terminology/granularity.md",
-    "terminology/pervasive.md",
-    "terminology/modular.md",
+    "people/siyuan-guo.md",
+    "people/fangyi-yu.md",
+    "people/christopher-potts.md",
+    "papers/solver-aided-verification-policy-compliance-tool.md",
+    "concepts/neurosymbolic-llm-verification.md",
+    "claims/minimal-modification-smt-repair-enables-actionable-compliance-diagnostics.md",
+    "papers/neuro-symbolic-compliance-integrating-llms-smt.md",
+    "claims/policy-rules-can-be-formalized-as-smt-constraints.md",
+    "concepts/policy-compliance-smt-formalization.md",
+    "claims/dsl-mediated-autoformalization-improves-translation-robustness.md",
+    "papers/proof-thought-neurosymbolic-program-synthesis.md",
+    "claims/llm-solver-integration-improves-faithful-reasoning.md",
+    "concepts/autoformalization.md",
+    "papers/logic-lm-empowering-llms-symbolic-solvers.md",
+    "ideas/distilled-rationale-feedback-prompt-refiner.md",
+    "papers/closer-look-claim-decomposition.md",
     "terminology",
-    "foundations/goodharts-law.md",
-    "foundations/fine-tuning.md",
-    "graph/open_questions.md",
     "papers/Memento-Skills- Let Agents Design Agents.pdf",
     "graph/edges.jsonl"
   ]

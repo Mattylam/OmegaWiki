@@ -45,6 +45,11 @@ date_updated: 2026-04-13
 
 ## Linked ideas
 
+- [[golden-evaluator-calibration-baseline]] — prerequisite: establish GE reliability before using it as a bootstrap validation metric
+- [[taxonomic-feedback-prompt-refiner]] — closed-vocabulary feedback schema that makes GE output directly BootstrapFewShot-compilable
+- [[pairwise-preference-feedback-prompt-refiner]] — preference-based alternative when any y*-leakage is unacceptable
+- [[distilled-rationale-feedback-prompt-refiner]] — two-stage evaluator with audited distillation
+
 Directly relevant to Phase 2 of the self-learning project: developer-override records (where the LLM was wrong and the developer corrected it) are by definition *failure traces* — but the developer's corrected output is a labeled successful example. Bootstrapping in this setting should use developer-corrected final prompts, not raw LLM outputs, as the demonstrations.
 
 > [!question] Open questions
