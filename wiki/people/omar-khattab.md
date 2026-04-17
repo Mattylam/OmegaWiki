@@ -14,6 +14,7 @@ LLM programming abstractions, retrieval-augmented generation, prompt optimisatio
 ## Key papers
 
 - [[dspy-compiling-declarative-language-model-calls]] (2023) — first author; introduces DSPy programming model with signatures, modules, and teleprompters
+- [[gepa-reflective-prompt-evolution-outperform-reinforcement]] (2025) — last/senior author; GEPA reflective-evolution prompt optimizer that beats RL with up to 35× fewer rollouts
 - Demonstrate-Search-Predict (DSP) (2022) — predecessor framework that inspired DSPy
 - ColBERT, ColBERTv2 — dense retrieval models used in HotPotQA case study
 

@@ -445,11 +445,13 @@ def find_entities(wiki_root: str, entity_type: str,
 # concept or claim is created, to prevent the "subagent A and subagent B both
 # create textual-gradient-descent under different slugs" failure mode.
 #
-# find-similar-concept ALSO scans wiki/foundations/ so that /ingest cannot
-# accidentally create a concept that duplicates an existing foundation page
-# (foundations are seeded by /prefill with their own title + aliases). A
-# foundation hit is marked with entity_type="foundation" in the output so the
-# caller can route to "reference instead of create" rather than merging.
+# find-similar-concept ALSO scans wiki/foundations/ and wiki/terminology/ so
+# that /ingest cannot accidentally create a concept that duplicates an existing
+# foundation or terminology page. Foundations are seeded by /prefill with their
+# own title + aliases; terminology pages are lightweight glossary entries. A
+# foundation hit is marked entity_type="foundation" and a terminology hit is
+# marked entity_type="terminology" in the output so the caller can route to
+# "reference instead of create" rather than merging.
 #
 # Score calibration:
 #   1.00  exact normalized match (case + stop-words ignored)
@@ -603,15 +605,16 @@ def _scan_entity_dir_for_similar(entity_dir: Path, entity_type: str,
 
 def find_similar_concept(wiki_root: str, candidate_title: str,
                          candidate_aliases: list[str] | None = None) -> None:
-    """Find existing concepts AND foundations that overlap with the candidate.
+    """Find existing concepts, foundations, AND terminology that overlap with the candidate.
 
-    Scans both wiki/concepts/ and wiki/foundations/. Results include an
-    entity_type field so the caller can distinguish:
-      - entity_type == "foundation" → reference the foundation, do not create
-      - entity_type == "concept"    → merge with existing concept
+    Scans wiki/concepts/, wiki/foundations/, and wiki/terminology/. Results
+    include an entity_type field so the caller can distinguish:
+      - entity_type == "foundation"  → reference the foundation, do not create
+      - entity_type == "terminology" → reference the term, do not create
+      - entity_type == "concept"     → merge with existing concept
 
     Output: JSON list of {entity_type, slug, title, aliases, score, match_reason}.
-    Empty list means "safe to create a new concept page".
+    Empty list means "safe to create a new concept/foundation/terminology page".
     """
     root = Path(wiki_root)
     candidate_aliases = candidate_aliases or []
@@ -621,13 +624,17 @@ def find_similar_concept(wiki_root: str, candidate_title: str,
     matches.extend(_scan_entity_dir_for_similar(
         root / "foundations", "foundation", candidate_names))
     matches.extend(_scan_entity_dir_for_similar(
+        root / "terminology", "terminology", candidate_names))
+    matches.extend(_scan_entity_dir_for_similar(
         root / "concepts", "concept", candidate_names))
 
-    # Sort: foundations with high score first (they're terminal — prefer them),
-    # then by score descending.
+    # Sort: terminal entities (foundations, terminology) with high score first
+    # (they're terminal — prefer them), then by score descending.
+    _terminal_types = {"foundation", "terminology"}
+
     def sort_key(m: dict) -> tuple:
-        is_found = 0 if m["entity_type"] == "foundation" else 1
-        return (is_found, -m["score"])
+        is_terminal = 0 if m["entity_type"] in _terminal_types else 1
+        return (is_terminal, -m["score"])
     matches.sort(key=sort_key)
     print(json.dumps(matches, ensure_ascii=False, indent=2))
 
@@ -2315,7 +2322,7 @@ def main():
 
     # find-similar-concept
     p = sub.add_parser("find-similar-concept",
-                       help="Detect existing concepts/foundations that semantically overlap with a candidate (call this BEFORE creating a new concept page)")
+                       help="Detect existing concepts/foundations/terminology that semantically overlap with a candidate (call this BEFORE creating a new concept page)")
     p.add_argument("wiki_root")
     p.add_argument("title", help="Candidate concept title")
     p.add_argument("--aliases", default="",

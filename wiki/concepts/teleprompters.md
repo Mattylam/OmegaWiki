@@ -3,10 +3,10 @@ title: "Teleprompters"
 aliases: ["teleprompter", "DSPy optimizer", "DSPy compiler strategy", "LM pipeline optimizer"]
 tags: [prompt-optimization, compilation, llm-programming, dspy]
 maturity: emerging
-key_papers: [dspy-compiling-declarative-language-model-calls]
+key_papers: [dspy-compiling-declarative-language-model-calls, gepa-reflective-prompt-evolution-outperform-reinforcement]
 first_introduced: "2023"
-date_updated: 2026-04-13
-related_concepts: []
+date_updated: 2026-04-17
+related_concepts: [reflective-prompt-evolution, compound-ai-system]
 ---
 
 ## Definition
@@ -32,6 +32,7 @@ where $\mathcal{P}(P)$ is the space of programs reachable from $P$ by varying mo
 - **`BootstrapFinetune`**: uses bootstrapped demonstrations to fine-tune a smaller LM (e.g. T5, llama2-13b) rather than selecting prompts. The optimisation target shifts from prompt text to model weights.
 - **`COPRO`** (later paper): rewrites instruction strings in signatures using an LLM-as-optimiser.
 - **`MIPROv2`** (later paper): jointly optimises instructions and few-shot examples; most powerful but most data-hungry.
+- **`GEPA` / `GEPA+Merge`** ([[gepa-reflective-prompt-evolution-outperform-reinforcement]], 2025): [[reflective-prompt-evolution|reflective evolutionary]] teleprompter — uses an LLM to reflect on sampled trajectories and propose prompt updates, with Pareto-front candidate selection and optional system-aware merge crossover for multi-module systems. Beats MIPROv2 by >10% across six tasks and matches or beats GRPO RL with up to 35× fewer rollouts.
 
 ## Comparison
 
@@ -43,6 +44,7 @@ where $\mathcal{P}(P)$ is the space of programs reachable from $P$ by varying mo
 | BootstrapFinetune | Small-model weights | ~50+ | High (also fine-tuning compute) |
 | COPRO | Instruction strings | ~10–20 | Moderate |
 | MIPROv2 | Joint instructions + demos | ~50–100 | Very high |
+| GEPA / GEPA+Merge | Per-module instructions via reflective evolution | ~50–200 (Pareto pool) | Very high (reflection LLM dominates) |
 
 ## When to use
 
@@ -50,6 +52,7 @@ where $\mathcal{P}(P)$ is the space of programs reachable from $P$ by varying mo
 - **BootstrapFewShot**: default choice once ~20 labelled examples are available and baseline program has >0 success rate
 - **BootstrapFinetune**: when production cost or latency demands a smaller model
 - **COPRO / MIPROv2**: when prompt-level tuning plateaus on simpler teleprompters
+- **GEPA / GEPA+Merge**: when MIPROv2 plateaus, when the validation distribution is heterogeneous (multi-task or multi-criterion), or when you have a multi-module compound system (merge crossover earns its keep)
 
 > [!warning] Known limitations
 > - Compile-time cost can be significant — BootstrapFewShot needs to run the program on every training input at least once
@@ -67,6 +70,7 @@ where $\mathcal{P}(P)$ is the space of programs reachable from $P$ by varying mo
 ## Key papers
 
 - [[dspy-compiling-declarative-language-model-calls]] (2023) — introduces the teleprompter abstraction and the LabeledFewShot, BootstrapFewShot, BootstrapFewShotWithRandomSearch, BootstrapFinetune variants
+- [[gepa-reflective-prompt-evolution-outperform-reinforcement]] (2025) — adds GEPA and GEPA+Merge teleprompters: reflective evolution + Pareto-front selection + system-aware merge crossover. Establishes that prompt-space optimization can outperform RL post-training under bounded rollout budgets.
 
 > [!tip] My understanding
 > Teleprompters are the mechanism that makes "compile your LLM program" a literal statement rather than a metaphor. The key abstraction move is: optimisation strategy is *decoupled* from the specific pipeline being optimised. For the self-learning project, this means a single teleprompter (likely BootstrapFewShot) can be applied independently to each of the Classifier's three steps once each has ~20-50 developer-confirmed records. Developer-override records are particularly valuable as mandatory few-shot seeds (the paper's framing: "examples that actually caused the model to produce correct outputs" — and the developer correction is precisely that signal).

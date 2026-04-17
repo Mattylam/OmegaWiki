@@ -76,6 +76,26 @@ papers:
     tags: [neurosymbolic, llm-symbolic-solver, smt, financial-compliance, legal-analysis, minimal-modification]
     importance: 3
     domain: NLP
+  - slug: bert-judge-robust-alternative-lexical-methods
+    title: "BERT-as-a-Judge: A Robust Alternative to Lexical Methods for Efficient Reference-Based LLM Evaluation"
+    tags: [llm-evaluation, reference-based-evaluation, encoder-based-evaluation, llm-as-judge, lexical-evaluation, bert, synthetic-data]
+    importance: 3
+    domain: NLP
+  - slug: minicheck-efficient-fact-checking-llms-grounding
+    title: "MiniCheck: Efficient Fact-Checking of LLMs on Grounding Documents"
+    tags: [factuality, nli, fact-checking, efficient-evaluation, synthetic-data, claim-document-nli]
+    importance: 4
+    domain: NLP
+  - slug: llm-verifier-general-purpose-verification-framework
+    title: "LLM-as-a-Verifier: A General-Purpose Verification Framework"
+    tags: [llm-evaluation, verification, test-time-scaling, reward-model, logprob-scoring, criteria-decomposition, swe-bench, coding-agents]
+    importance: 3
+    domain: NLP
+  - slug: gepa-reflective-prompt-evolution-outperform-reinforcement
+    title: "GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning"
+    tags: [prompt-optimization, compound-ai-system, reflective-evolution, sample-efficiency, reinforcement-learning, evolutionary-search, pareto-selection, dspy]
+    importance: 5
+    domain: NLP
 
 concepts:
   - slug: bootstrap-dspy
@@ -134,6 +154,22 @@ concepts:
     title: "Policy Compliance via SMT Formalization"
     tags: [neurosymbolic, llm-symbolic-solver, smt-lib, z3, policy-compliance, compliance-verification]
     maturity: emerging
+  - slug: encoder-based-reference-evaluation
+    title: "Encoder-Based Reference Evaluation"
+    tags: [llm-evaluation, reference-based-evaluation, encoder-based-evaluation, bert, text-classification]
+    maturity: emerging
+  - slug: llm-verifier
+    title: "LLM-as-a-Verifier"
+    tags: [llm-evaluation, verification, test-time-scaling, reward-model, logprob-scoring, criteria-decomposition]
+    maturity: emerging
+  - slug: reflective-prompt-evolution
+    title: "Reflective Prompt Evolution"
+    tags: [prompt-optimization, evolutionary-search, llm-reflection, sample-efficiency, compound-ai-system]
+    maturity: emerging
+  - slug: compound-ai-system
+    title: "Compound AI System"
+    tags: [llm-programming, llm-pipelines, agentic-systems, system-design, compound-ai-system]
+    maturity: active
 
 topics:
 
@@ -141,6 +177,9 @@ people:
   - slug: christopher-potts
     tags: [nlp, computational-linguistics, llm-programming, foundation-models]
     affiliation: "Stanford University"
+  - slug: lakshya-agrawal
+    tags: [prompt-optimization, llm-programming, compound-ai-system, dspy]
+    affiliation: "UC Berkeley"
   - slug: fangyi-yu
     tags: [llm-evaluation, survey, agent-as-a-judge]
     affiliation: ""
@@ -296,6 +335,30 @@ claims:
     tags: [neurosymbolic, llm-symbolic-solver, smt, compliance-verification, repair, minimal-modification]
     status: weakly_supported
     confidence: 0.65
+    domain: NLP
+  - slug: encoder-based-evaluation-matches-llm-judge
+    title: "Encoder-based evaluation matches LLM judge performance at drastically lower compute for reference-based answer correctness"
+    tags: [llm-evaluation, encoder-based-evaluation, reference-based-evaluation, efficiency, llm-as-judge]
+    status: supported
+    confidence: 0.75
+    domain: NLP
+  - slug: logprob-based-multi-criteria-verification-improves
+    title: "Logprob-based multi-criteria verification improves trajectory selection over discrete LLM-as-a-Judge scoring"
+    tags: [llm-evaluation, verification, reward-model, test-time-scaling, criteria-decomposition, logprob-scoring]
+    status: weakly_supported
+    confidence: 0.55
+    domain: NLP
+  - slug: reflective-prompt-evolution-outperforms-reinforcement-learning
+    title: "Reflective prompt evolution outperforms reinforcement learning at low rollout budgets for compound AI system adaptation"
+    tags: [prompt-optimization, reinforcement-learning, sample-efficiency, compound-ai-system, reflective-evolution]
+    status: weakly_supported
+    confidence: 0.65
+    domain: NLP
+  - slug: pareto-aware-candidate-selection-prevents-prompt
+    title: "Pareto-front-based candidate selection prevents evolutionary prompt search from collapsing to local optima"
+    tags: [prompt-optimization, evolutionary-search, pareto-selection, multi-objective-optimization]
+    status: weakly_supported
+    confidence: 0.6
     domain: NLP
 
 Summary:

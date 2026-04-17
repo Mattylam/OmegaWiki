@@ -1,12 +1,12 @@
 ---
-description: Ingest a paper into the wiki — creates pages (papers + concepts + people + claims) and builds all cross-references and graph edges
+description: Ingest a paper into the wiki — creates pages (papers + concepts + foundations + terminology + people + claims) and builds all cross-references and graph edges
 argument-hint: <local-path-or-arXiv-URL>
 ---
 
 # /ingest
 
-> Fully absorb a paper into the wiki: create the paper page, extract/create concepts, people, and claims,
-> establish all bidirectional cross-references, maintain graph edges, update index.md and log.md.
+> Fully absorb a paper into the wiki: create the paper page, extract/create concepts, foundations, terminology,
+> people, and claims, establish all bidirectional cross-references, maintain graph edges, update index.md and log.md.
 > This is the wiki's core skill — all knowledge flows in through ingest.
 
 ## Inputs
@@ -17,6 +17,8 @@ argument-hint: <local-path-or-arXiv-URL>
 
 - `wiki/papers/{slug}.md` — paper page
 - `wiki/concepts/{slug}.md` — new concept pages (if not already in wiki)
+- `wiki/foundations/{slug}.md` — new foundation pages for textbook-level concepts not already in wiki (conservative: at most 1 per paper)
+- `wiki/terminology/{slug}.md` — new terminology pages for generic vocabulary used as wikilinks (inline, as needed)
 - `wiki/people/{slug}.md` — key author pages (importance >= 4 and not already in wiki)
 - `wiki/claims/{slug}.md` — core claims from the paper (if not already in wiki)
 - updated cross-reference pages (backlinks in concepts, topics, people, claims)
@@ -30,6 +32,8 @@ argument-hint: <local-path-or-arXiv-URL>
 - `wiki/index.md` — get all existing page slugs and tags for matching
 - `wiki/papers/*.md` — check if paper is already ingested
 - `wiki/concepts/*.md` — match existing concepts, append key_papers
+- `wiki/foundations/*.md` — match existing foundations (via find-similar-concept)
+- `wiki/terminology/*.md` — match existing terminology (via find-similar-concept)
 - `wiki/topics/*.md` — match research directions, append paper
 - `wiki/people/*.md` — match existing authors
 - `wiki/claims/*.md` — match existing claims, append evidence
@@ -38,6 +42,8 @@ argument-hint: <local-path-or-arXiv-URL>
 ### Writes
 - `wiki/papers/{slug}.md` — CREATE
 - `wiki/concepts/{slug}.md` — CREATE (new concept) or EDIT (append key_papers)
+- `wiki/foundations/{slug}.md` — CREATE (new foundation for textbook concepts, conservative: at most 1 per paper)
+- `wiki/terminology/{slug}.md` — CREATE (new terminology for generic vocabulary used as wikilinks)
 - `wiki/topics/{slug}.md` — EDIT (append seminal_works / recent_work)
 - `wiki/people/{slug}.md` — CREATE (new author) or EDIT (append Key papers)
 - `wiki/claims/{slug}.md` — CREATE (new claim) or EDIT (append evidence)
@@ -225,7 +231,7 @@ Read the paper's method/approach sections. List 1-3 technical concepts the paper
 python3 tools/research_wiki.py find-similar-concept wiki/ "<candidate concept title>" --aliases "<comma-separated alternative names>"
 ```
 
-This is a deterministic tool that matches by exact title, alias overlap, phrase containment, and token Jaccard. It scans **both `wiki/concepts/` and `wiki/foundations/`** and tags each result with `entity_type: "concept"` or `entity_type: "foundation"`. Results are returned as a JSON list sorted so that foundation hits come first, then concepts by score. Example:
+This is a deterministic tool that matches by exact title, alias overlap, phrase containment, and token Jaccard. It scans **`wiki/concepts/`, `wiki/foundations/`, and `wiki/terminology/`** and tags each result with `entity_type: "concept"`, `"foundation"`, or `"terminology"`. Results are returned as a JSON list sorted so that terminal entity hits (foundations, terminology) come first, then concepts by score. Example:
 
 ```json
 [
@@ -236,6 +242,14 @@ This is a deterministic tool that matches by exact title, alias overlap, phrase 
     "aliases": ["scaled dot-product attention", "self-attention"],
     "score": 0.85,
     "match_reason": "phrase containment: 'self-attention' ↔ 'attention mechanism'"
+  },
+  {
+    "entity_type": "terminology",
+    "slug": "granularity",
+    "title": "Granularity",
+    "aliases": [],
+    "score": 1.0,
+    "match_reason": "exact normalized match: 'granularity' == 'granularity'"
   },
   {
     "entity_type": "concept",
@@ -250,7 +264,7 @@ This is a deterministic tool that matches by exact title, alias overlap, phrase 
 ]
 ```
 
-An empty list `[]` means no similar concept or foundation exists; you may proceed to Branch C.
+An empty list `[]` means no similar concept, foundation, or terminology exists; you may proceed to Branch C.
 
 #### Step 5.A.3: Branch on the JSON result
 
@@ -265,6 +279,12 @@ The candidate is foundational background knowledge. **Do not create a concept pa
 4. This candidate does **not** count toward the per-paper hard limit.
 
 If the top result is a foundation with score 0.40-0.80, read the foundation's `## Definition`. If it's truly the same textbook concept, treat as Branch 0. If the paper is proposing a specifically new technical mechanism on top of that background, fall through to Branch A/B/C — but link `derived_from` to the foundation in addition to whatever concept you end up referencing.
+
+**Branch T — any result has `entity_type: "terminology"` and score >= 0.80** (evaluate AFTER Branch 0, BEFORE Branch A):
+The candidate matches an existing terminology entry. **Do not create a concept or foundation page, and do not modify the terminology page (terminology pages are terminal — no reverse link).**
+1. Use `[[<terminology-slug>]]` in the paper page body wherever the term appears naturally
+2. Do NOT add the paper to the terminology page's frontmatter — terminology writes no reverse links
+3. This candidate does **not** count toward the per-paper hard limit
 
 **Branch A — top concept result (entity_type "concept") has score >= 0.85** (exact, alias, or phrase containment):
 This is the **same concept**. Do NOT create a new file. Instead:
@@ -286,24 +306,34 @@ Read the existing concept's `## Definition` and `## Intuition` sections. Make th
 **Default to Branch A when uncertain.** Over-merging is a much smaller mistake than over-creating: a wrongly-merged concept can be split later (with `## Variants` history preserved), but a sea of near-duplicate concepts poisons gap detection, citation graphs, and survey generation. If you choose Branch C here, your reasoning must point to a specific technical distinction (different mechanism, different mathematical formulation, different application class).
 
 **Branch C — top result has score < 0.40, OR list is empty**:
-No existing concept or foundation covers this idea.
-1. **Check the hard limit first.** Count how many NEW concept pages you have already created for this paper (Branch 0 foundation references do not count). If you are at the limit (1 for importance < 5, 3 for importance == 5), **STOP creating new concepts**. Force the remaining candidates into Branch A using the closest existing concept from `find-similar-concept`, even at score < 0.40.
-2. Otherwise, create `wiki/concepts/{concept-slug}.md` per the CLAUDE.md template:
-   - Generate slug: `python3 tools/research_wiki.py slug "<concept-title>"`
-   - maturity: `emerging`
-   - key_papers: `[<paper-slug>]`
-   - aliases: list of all alternative names you found in the paper (be generous — this list is what future ingests will match against)
-3. Append `[[<concept-slug>]]` to the paper page's `## Related`
-4. Add graph edge (same as Branch A step 5)
+No existing concept, foundation, or terminology covers this idea.
+1. **Check the hard limit first.** Count how many NEW concept pages AND NEW foundation pages you have already created for this paper (Branch 0/T terminal references do not count). If you are at the concept limit (1 for importance < 5, 3 for importance == 5), **STOP creating new concepts**. Force the remaining candidates into Branch A using the closest existing concept from `find-similar-concept`, even at score < 0.40.
+2. **Classify the candidate** before creating a page:
+   - **Terminology** — the word itself is the content; a generic adjective, quality, or atomic vocabulary term (e.g. "brittle", "modular", "granularity"). Create `wiki/terminology/{slug}.md` per the CLAUDE.md terminology template. Terminology pages do NOT count toward the concept hard limit. No graph edge needed (terminal, no reverse links).
+   - **Foundation** — settled textbook knowledge with substantial technical content that is not evolving with new papers (e.g. "gradient descent", "cross-entropy loss", "backpropagation"). **At most 1 new foundation per paper** (conservative — `/prefill` is the primary source for foundations). Create `wiki/foundations/{slug}.md` per the CLAUDE.md foundations template. Foundations are terminal — no reverse links. Add a `derived_from` graph edge from the paper to the foundation:
+     ```bash
+     python3 tools/research_wiki.py add-edge wiki/ --from papers/<paper-slug> --to foundations/<foundation-slug> --type derived_from --evidence "<one-line summary>"
+     ```
+     Append `[[<foundation-slug>]]` to the paper page's `## Related`. Foundation creation does NOT count toward the concept hard limit, but is limited to 1 per paper.
+   - **Concept** — active research direction whose definition evolves with new papers. Create `wiki/concepts/{concept-slug}.md` per the CLAUDE.md concept template:
+     - Generate slug: `python3 tools/research_wiki.py slug "<concept-title>"`
+     - maturity: `emerging`
+     - key_papers: `[<paper-slug>]`
+     - aliases: list of all alternative names you found in the paper (be generous — this list is what future ingests will match against)
+     - Append `[[<concept-slug>]]` to the paper page's `## Related`
+     - Add graph edge (same as Branch A step 5)
+   
+   **Classification heuristic**: if unsure between foundation and concept, ask: "Would a new paper in 2026 cite this as background, or as a competing/evolving approach?" Background = foundation. Evolving = concept.
 
 #### Step 5.A.4: Self-check at end of Part A — MANDATORY
 
-Log how many concepts this ingest created vs. matched vs. referenced-as-foundation:
+Log how many entities this ingest created vs. matched vs. referenced:
 ```bash
-python3 tools/research_wiki.py log wiki/ "ingest | concepts for <paper-slug>: N matched existing, M new, F foundation-refs"
+python3 tools/research_wiki.py log wiki/ "ingest | concepts for <paper-slug>: N matched existing, M new concepts, F foundation-refs, Fn new foundations, T terminology-refs, Tn new terminology"
 ```
 
-**If M > the hard limit**, you violated the constraint. STOP, undo the extra new concept files, convert them to Branch A appends.
+**If M > the concept hard limit** (1 for importance < 5, 3 for importance == 5), you violated the constraint. STOP, undo the extra new concept files, convert them to Branch A appends.
+**If Fn > 1**, you violated the foundation limit. STOP, undo the extra foundation file — consider whether it should be a concept or merged with an existing foundation.
 
 #### Anti-patterns (do NOT do these)
 
@@ -312,7 +342,8 @@ python3 tools/research_wiki.py log wiki/ "ingest | concepts for <paper-slug>: N 
 - ❌ **Slug-only matching** — slugs are autogenerated from titles, the same idea phrased differently gets different slugs (test6: `llm-driven-evolutionary-operators` vs `llms-evolutionary-operators`)
 - ❌ **Treating Branch B as "default to create"** — the default is merge, not split
 - ❌ **Creating a "more general" or "more specific" version of an existing concept as a new page** — extend the existing concept with `## Variants` instead
-- ❌ **Writing back to a foundation page** — foundations are terminal; their `key_papers`-style fields do not exist, and any reverse link violates the invariant. Only paper → foundation edges in `edges.jsonl` and `[[foundation-slug]]` in the paper's `## Related` are allowed.
+- ❌ **Writing back to a foundation or terminology page** — both are terminal; their `key_papers`-style fields do not exist, and any reverse link violates the invariant. Only paper → foundation/terminology edges in `edges.jsonl` and `[[slug]]` in the paper's `## Related` or body are allowed.
+- ❌ **Creating more than 1 foundation per paper** — `/prefill` is the primary source for foundations; `/ingest` creates them only when clearly textbook material is missing
 
 **Part B — Topic matching:**
 
@@ -389,9 +420,9 @@ Wiki: +1 paper, +{N} claims, +{M} concepts, +{K} edges | Maturity: {level} ({cov
 - **log.md append-only**: append via `python3 tools/research_wiki.py log`
 - **Importance scoring**: 1=niche, 2=useful, 3=field-standard, 4=influential, 5=seminal
 - **Conservative claim extraction**: extract only claims the paper explicitly asserts — do not over-infer
-- **Deduplication is mandatory, not optional**: BEFORE creating any new claim or concept page, you MUST run `find-similar-claim` / `find-similar-concept` and follow Step 4 / Step 5.A's branching logic. `find-similar-concept` scans both `concepts/` and `foundations/`; a foundation match routes to Branch 0 (reference only, never create). Skipping the dedup tool is the single most common cause of wiki bloat.
-- **Hard limits per paper**: at most 1 new claim and 1 new concept (or 2 claims and 3 concepts if importance == 5). All other claims/concepts must be matched to existing entries via Branch A, or referenced from a foundation via Branch 0. When in doubt, merge.
-- **Foundations are terminal**: never write a reverse link from a paper to a foundation's frontmatter. Foundation references live only in the paper's `## Related` and in `edges.jsonl`.
+- **Deduplication is mandatory, not optional**: BEFORE creating any new claim or concept page, you MUST run `find-similar-claim` / `find-similar-concept` and follow Step 4 / Step 5.A's branching logic. `find-similar-concept` scans `concepts/`, `foundations/`, and `terminology/`; a foundation match routes to Branch 0 (reference only, never create), a terminology match routes to Branch T (reference only). Skipping the dedup tool is the single most common cause of wiki bloat.
+- **Hard limits per paper**: at most 1 new claim and 1 new concept (or 2 claims and 3 concepts if importance == 5). At most 1 new foundation per paper (conservative — `/prefill` is the primary source). No limit on terminology creation (they are minimal). All other claims/concepts must be matched to existing entries via Branch A, or referenced from a foundation via Branch 0. When in doubt, merge.
+- **Foundations and terminology are terminal**: never write a reverse link from a paper to a foundation's or terminology page's frontmatter. References live only in the paper's `## Related` / body and in `edges.jsonl`.
 
 ## Error Handling
 
@@ -406,7 +437,7 @@ Wiki: +1 paper, +{N} claims, +{M} concepts, +{K} edges | Maturity: {level} ({cov
 
 ### Tools（via Bash）
 - `python3 tools/research_wiki.py slug "<title>"` — slug generation
-- `python3 tools/research_wiki.py find-similar-concept wiki/ "<title>" --aliases "<a,b,c>"` — **MANDATORY before creating any concept** (Step 5 Part A). Scans both `concepts/` and `foundations/`; tag-ranked foundations first.
+- `python3 tools/research_wiki.py find-similar-concept wiki/ "<title>" --aliases "<a,b,c>"` — **MANDATORY before creating any concept** (Step 5 Part A). Scans `concepts/`, `foundations/`, and `terminology/`; terminal entities (foundations, terminology) ranked first.
 - `python3 tools/research_wiki.py find-similar-claim wiki/ "<title>" --tags "<a,b,c>"` — **MANDATORY before creating any claim** (Step 4). Canonicalized token Jaccard with tag-aware threshold.
 - `python3 tools/research_wiki.py add-edge wiki/ --from <id> --to <id> --type <type> --evidence "<text>"` — add graph edge
 - `python3 tools/research_wiki.py rebuild-context-brief wiki/` — rebuild compressed context

@@ -14,6 +14,7 @@ Natural language processing, computational semantics, foundation models, ethics 
 ## Key papers
 
 - [[dspy-compiling-declarative-language-model-calls]] (2023) — senior author
+- [[gepa-reflective-prompt-evolution-outperform-reinforcement]] (2025) — co-author; GEPA reflective-evolution prompt optimizer for compound AI systems
 
 ## Recent work
 

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ideas/decomposed-reference-based-golden-evaluator.md",
+                "file": "concepts/encoder-based-reference-evaluation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "decomposed-reference-based-golden-evaluator"
+              "title": "encoder-based-reference-evaluation"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 501.5
   },
   "right": {
     "id": "b0189318a207be28",
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ideas/decomposed-reference-based-golden-evaluator.md",
+                "file": "concepts/encoder-based-reference-evaluation.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for decomposed-reference-based-golden-evaluator"
+              "title": "Backlinks for encoder-based-reference-evaluation"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ideas/decomposed-reference-based-golden-evaluator.md",
+                "file": "concepts/encoder-based-reference-evaluation.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from decomposed-reference-based-golden-evaluator"
+              "title": "Outgoing links from encoder-based-reference-evaluation"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ideas/decomposed-reference-based-golden-evaluator.md",
+                "file": "concepts/encoder-based-reference-evaluation.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of decomposed-reference-based-golden-evaluator"
+              "title": "Outline of encoder-based-reference-evaluation"
             }
           }
         ]
@@ -185,8 +185,21 @@
   },
   "active": "a99d72959ddffaf2",
   "lastOpenFiles": [
-    "ideas/golden-evaluator-calibration-baseline.md",
+    "people/lakshya-agrawal.md",
+    "concepts/compound-ai-system.md",
+    "concepts/reflective-prompt-evolution.md",
+    "claims/pareto-aware-candidate-selection-prevents-prompt.md",
+    "claims/reflective-prompt-evolution-outperforms-reinforcement-learning.md",
+    "papers/gepa-reflective-prompt-evolution-outperform-reinforcement.md",
+    "concepts/llm-verifier.md",
+    "claims/logprob-based-multi-criteria-verification-improves.md",
+    "papers/llm-verifier-general-purpose-verification-framework.md",
+    "papers/bert-judge-robust-alternative-lexical-methods.md",
     "ideas/decomposed-reference-based-golden-evaluator.md",
+    "papers/minicheck-efficient-fact-checking-llms-grounding.md",
+    "concepts/encoder-based-reference-evaluation.md",
+    "claims/encoder-based-evaluation-matches-llm-judge.md",
+    "ideas/golden-evaluator-calibration-baseline.md",
     "ideas/pairwise-preference-feedback-prompt-refiner.md",
     "ideas/per-case-smt-routed-correctness-branch.md",
     "ideas/taxonomic-feedback-prompt-refiner.md",
@@ -198,19 +211,6 @@
     "people/siyuan-guo.md",
     "people/fangyi-yu.md",
     "people/christopher-potts.md",
-    "papers/solver-aided-verification-policy-compliance-tool.md",
-    "concepts/neurosymbolic-llm-verification.md",
-    "claims/minimal-modification-smt-repair-enables-actionable-compliance-diagnostics.md",
-    "papers/neuro-symbolic-compliance-integrating-llms-smt.md",
-    "claims/policy-rules-can-be-formalized-as-smt-constraints.md",
-    "concepts/policy-compliance-smt-formalization.md",
-    "claims/dsl-mediated-autoformalization-improves-translation-robustness.md",
-    "papers/proof-thought-neurosymbolic-program-synthesis.md",
-    "claims/llm-solver-integration-improves-faithful-reasoning.md",
-    "concepts/autoformalization.md",
-    "papers/logic-lm-empowering-llms-symbolic-solvers.md",
-    "ideas/distilled-rationale-feedback-prompt-refiner.md",
-    "papers/closer-look-claim-decomposition.md",
     "terminology",
     "papers/Memento-Skills- Let Agents Design Agents.pdf",
     "graph/edges.jsonl"
