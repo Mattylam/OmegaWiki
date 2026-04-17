@@ -36,7 +36,6 @@ date_updated: 2026-04-15
 ## Linked ideas
 
 - [[golden-evaluator-calibration-baseline]] — implies GE queries should default to balanced-permutation aggregation; across-permutation variance should be a calibration-card diagnostic
-- [[pairwise-preference-feedback-prompt-refiner]] — weakens the conventional "pointwise is position-bias-free" argument that motivates choosing pairwise over pointwise
 - [[decomposed-reference-based-golden-evaluator]] — this claim is a direct motivator: structural alternative that avoids rubric-option position bias by replacing holistic rubrics with per-criterion decomposed judgments
 
 > [!question] Open questions

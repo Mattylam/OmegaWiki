@@ -43,7 +43,7 @@ date_updated: 2026-04-13
 
 - [[golden-evaluator-calibration-baseline]] — prerequisite calibration study; if single-LLM GE fails the calibration bar, multi-agent debate (supported by this claim) is the natural fallback architecture
 
-This claim strengthens the case for using a **Scorer-Critic-Commander** pattern in the self-learning project's Optimisation Phase Golden Evaluator — particularly on contested or low-confidence cases where single-judge scoring may carry systematic bias. If the pairwise-feedback idea ([[pairwise-preference-feedback-prompt-refiner]]) proves too noisy, multi-agent debate is the natural next step.
+This claim strengthens the case for using a **Scorer-Critic-Commander** pattern in the self-learning project's Optimisation Phase Golden Evaluator — particularly on contested or low-confidence cases where single-judge scoring may carry systematic bias.
 
 > [!question] Open questions
 > - Cost-benefit: is 10-16% correlation improvement worth 3× LLM-call cost?

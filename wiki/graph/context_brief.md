@@ -3,9 +3,9 @@
 _Auto-generated compressed context. Do not edit._
 
 ## Claims (20 total)
-- [weakly_supported] Bootstrapping produces better few-shot demonstrations than hand-written examples (conf: 0.65)
 - [supported] Integrating LLMs with deterministic symbolic solvers materially improves faithfulness of logical reasoning over LLM-only baselines (conf: 0.85)
 - [supported] Natural-language policy and compliance rules can be formalised into SMT-LIB constraints with LLM + human assistance, enabling runtime enforcement that reduces violations without sacrificing task accuracy (conf: 0.75)
+- [weakly_supported] Bootstrapping produces better few-shot demonstrations than hand-written examples (conf: 0.65)
 - [supported] Rank correlation alone is insufficient for evaluating LLM judges; per-item agreement (Cohen's κ) relative to the inter-human distribution is required (conf: 0.8)
 - [weakly_supported] Decomposer quality can be measured automatically via completeness, correctness, and semantic-entropy metrics, enabling decomposer benchmarking and fine-tuning without human annotation (conf: 0.65)
 - [supported] Decomposing long-form generation into atomic facts enables fine-grained factuality evaluation that can be automated to within 2% of human agreement (conf: 0.8)
@@ -21,9 +21,9 @@ _Auto-generated open questions. Do not edit._
 - [claim/continual-learning-via-external-memory] Continual learning for LLM agents can be achieved via external memory evolution without parameter updates (status: weakly_supported)
 - [claim/decomposer-quality-can-be-measured-automatically] Decomposer quality can be measured automatically via completeness, correctness, and semantic-entropy metrics, enabling decomposer benchmarking and fine-tuning without human annotation (status: weakly_supported)
 - [claim/dsl-mediated-autoformalization-improves-translation-robustness] Routing LLM autoformalization through a domain-specific intermediate DSL (with typed interpreter) materially improves translation robustness and auditability over direct LLM-to-solver generation (status: weakly_supported)
-- [claim/dspy-compiled-programs-outperform-hand-crafted-prompts] Compiled DSPy programs outperform hand-crafted prompt chains (status: weakly_supported)
 - [claim/logprob-based-multi-criteria-verification-improves] Logprob-based multi-criteria verification improves trajectory selection over discrete LLM-as-a-Judge scoring (status: weakly_supported)
-- [claim/minimal-modification-smt-repair-enables-actionable-compliance-diagnostics] Extending SMT compliance verification with a minimal-modification repair step converts binar
+- [claim/minimal-modification-smt-repair-enables-actionable-compliance-diagnostics] Extending SMT compliance verification with a minimal-modification repair step converts binary verdicts into actionable compliance diagnostics that localise which specific facts drive non-compliance (status: weakly_supported)
+- [claim/multi-agent
 ## Papers (19 total)
 - [5] DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines (NLP)
 - [4] When AIs Judge AIs: The Rise of Agent-as-a-Judge Evaluation for LLMs (NLP)
@@ -40,7 +40,7 @@ _Auto-generated open questions. Do not edit._
 - [5] Logic-LM: Empowering Large Language Models with Symbolic Solvers for Faithful Logical Reasoning (NLP)
 - [4] MiniCheck: Efficient Fact-Checking of LLMs on Grounding Documents (NLP)
 - [3] Am I More Pointwise or Pairwise? Revealing Position Bias in Rubric-Based LLM-as-a-Judge (NLP)
-## Recent Relationships (129 total)
+## Recent Relationships (126 total)
   ideas/per-case-smt-routed-correctness-branch --derived_from--> claims/minimal-modification-smt-repair-enables-actionable-compliance-diagnostics
   ideas/per-case-smt-routed-correctness-branch --inspired_by--> ideas/decomposed-reference-based-golden-evaluator
   ideas/per-case-smt-routed-correctness-branch --derived_from--> foundations/natural-language-inference

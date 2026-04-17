@@ -47,8 +47,6 @@ Rubric-based pointwise scoring is **not genuinely pointwise**. It is a multi-cho
 
 > [!tip] My take
 > This is a direct threat model for the [[golden-evaluator-calibration-baseline]] design. The current sketch uses 0–5 ordinal per-criterion scoring — exactly the multi-choice setup this paper shows is position-biased. Mitigations to adopt: (a) always report scores averaged over a balanced permutation of the rubric, or (b) use logprob-weighted scoring where available instead of argmax over options. The variance across permutations should itself be a headline diagnostic on the GE calibration card — if a judge's score for the same output varies by > 0.5 points across rubric orderings, that judge is not fit for discriminating fine-grained prompt-refiner improvements.
->
-> This also complicates the comparison in [[pairwise-preference-feedback-prompt-refiner]] vs rubric pointwise designs: the conventional wisdom is "pairwise is noisier but less biased than pointwise". This paper suggests pointwise *also* carries position bias; the choice becomes which bias is easier to mitigate for your specific loss.
 
 ## Related
 
