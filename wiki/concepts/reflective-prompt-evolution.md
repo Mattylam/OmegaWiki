@@ -3,10 +3,10 @@ title: "Reflective Prompt Evolution"
 aliases: ["reflective prompt optimization", "reflection-based prompt search", "trajectory-reflective prompt mutation", "natural-language-feedback prompt evolution", "GEPA-style prompt evolution"]
 tags: [prompt-optimization, evolutionary-search, llm-reflection, sample-efficiency, compound-ai-system]
 maturity: emerging
-key_papers: [gepa-reflective-prompt-evolution-outperform-reinforcement]
+key_papers: [gepa-reflective-prompt-evolution-outperform-reinforcement, system-prompt-optimization-meta-learning, task-facet-learning-structured-approach-prompt, prorefine-inference-time-prompt-refinement-textual]
 first_introduced: "2025"
 date_updated: 2026-04-17
-related_concepts: [teleprompters, compound-ai-system]
+related_concepts: [teleprompters, compound-ai-system, meta-prompt-optimization, sectioned-prompt-optimization]
 ---
 
 ## Definition
@@ -38,6 +38,7 @@ The *reflection meta-prompt* is the algorithm's main lever — its job is to eli
 - **GEPA** (Agrawal et al. 2025) — base reflective evolution + Pareto-front candidate selection; first to demonstrate the paradigm beating RL.
 - **GEPA+Merge** — adds system-aware crossover for multi-module compound systems: per-module crossover between two Pareto-front parents.
 - **TextGrad-style** (related family, predates GEPA) — uses LLM "natural-language gradients" but typically without an explicit evolutionary loop; reflective prompt evolution generalizes the idea to a population-based search.
+- **ProRefine** (Pandita et al. 2025) — inference-time variant: the same textual feedback → prompt revision loop, but triggered per-instance during deployment when a verifier detects a likely failure. Ephemeral (prompt not stored across instances). [[prorefine-inference-time-prompt-refinement-textual]]
 
 ## Comparison
 

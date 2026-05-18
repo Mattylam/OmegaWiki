@@ -15,6 +15,7 @@ ML systems, data systems infrastructure (Apache Spark co-creator), LLM infrastru
 
 - [[dspy-compiling-declarative-language-model-calls]] (2023) — co-author
 - [[gepa-reflective-prompt-evolution-outperform-reinforcement]] (2025) — co-author; GEPA reflective-evolution prompt optimizer with Pareto-aware selection
+- [[measuring-agents-production]] (2025) — co-author; first systematic empirical study of production AI agents across 306 practitioners
 
 ## Recent work
 

@@ -11,10 +11,28 @@
             "id": "0ddf642ee08a9e25",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "papers/taming-actor-observer-asymmetry-agents-dialectical.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "taming-actor-observer-asymmetry-agents-dialectical"
+            }
+          },
+          {
+            "id": "4046a87771687362",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "concepts/hierarchical-corpus-navigation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "hierarchical-corpus-navigation"
             }
           }
         ]
@@ -49,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "Taming Actor-Observer Asymmetry in Agents via Dialectical Alignment",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 501.5
+    "width": 287.5
   },
   "right": {
     "id": "b0189318a207be28",
@@ -181,32 +199,32 @@
   },
   "active": "0ddf642ee08a9e25",
   "lastOpenFiles": [
-    "golden-evaluator-calibration-baseline.md",
-    "ideas/per-case-smt-routed-correctness-branch.md",
-    "ideas/decomposed-reference-based-golden-evaluator.md",
-    "ideas/taxonomic-feedback-prompt-refiner.md",
-    "ideas/pairwise-preference-feedback-prompt-refiner.md",
-    "ideas/golden-evaluator-calibration-baseline.md",
-    "ideas/distilled-rationale-feedback-prompt-refiner.md",
-    "papers/gepa-reflective-prompt-evolution-outperform-reinforcement.md",
-    "papers/minicheck-efficient-fact-checking-llms-grounding.md",
-    "papers/proof-thought-neurosymbolic-program-synthesis.md",
-    "papers/self-preference-bias-llm-judge.md",
-    "papers/neuro-symbolic-compliance-integrating-llms-smt.md",
-    "concepts/encoder-based-reference-evaluation.md",
-    "people/lakshya-agrawal.md",
-    "concepts/compound-ai-system.md",
-    "concepts/reflective-prompt-evolution.md",
-    "claims/pareto-aware-candidate-selection-prevents-prompt.md",
-    "claims/reflective-prompt-evolution-outperforms-reinforcement-learning.md",
-    "concepts/llm-verifier.md",
-    "claims/logprob-based-multi-criteria-verification-improves.md",
-    "papers/llm-verifier-general-purpose-verification-framework.md",
+    "index.md",
+    "papers/intent-based-prompt-calibration-enhancing-prompt.md",
+    "papers/measuring-agents-production.md",
+    "papers/don-retrieve-navigate-distilling-enterprise-knowledge.md",
+    "claims/production-agents-rely-simple-prompt-based.md",
+    "concepts/production-agent-deployment-patterns.md",
+    "concepts/hierarchical-corpus-navigation.md",
+    "papers/decmetrics-structured-claim-decomposition-scoring-factually.md",
+    "papers/closer-look-claim-decomposition.md",
     "papers/bert-judge-robust-alternative-lexical-methods.md",
-    "claims/encoder-based-evaluation-matches-llm-judge.md",
+    "papers/automatic-prompt-optimization-techniques-exploring-potential.md",
     "papers/am-more-pointwise-pairwise-revealing-position.md",
-    "foundations/natural-language-inference.md",
-    "foundations/react-prompting.md",
+    "papers/factscore-fine-grained-atomic-evaluation-factual.md",
+    "papers/rubrics-rewards-reinforcement-learning-beyond-verifiable.md",
+    "papers/memento-skills-let-agents-design-agents.md",
+    "claims/bootstrapping-produces-better-demonstrations-than-hand-written.md",
+    "concepts/rubrics-as-rewards.md",
+    "papers/dspy-compiling-declarative-language-model-calls.md",
+    "concepts/shot-dark-problem.md",
+    "foundations/shot-dark-problem.md",
+    "claims/curated-skills-outperform-self-generated-skills.md",
+    "concepts/agentic-skill-design-patterns.md",
+    "papers/sok-agentic-skills-beyond-tool-use.md",
+    "claims/llm-agent-navigating-hierarchical-pre-compiled.md",
+    "papers/task-facet-learning-structured-approach-prompt.md",
+    "people/jiawei-han.md",
     "terminology",
     "papers/Memento-Skills- Let Agents Design Agents.pdf",
     "graph/edges.jsonl"

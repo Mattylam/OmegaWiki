@@ -14,6 +14,7 @@ Prompt optimization for compound AI systems, sample-efficient adaptation of LLMs
 ## Key papers
 
 - [[gepa-reflective-prompt-evolution-outperform-reinforcement]] (2025) — first author; introduces GEPA (Genetic-Pareto), a reflective prompt evolution algorithm that outperforms GRPO RL post-training by 6–20% with up to 35× fewer rollouts and beats MIPROv2 by >10% across six benchmarks.
+- [[measuring-agents-production]] (2025) — co-author; large-scale empirical study of production AI agents, finding 74% of deployments rely on human evaluation
 
 ## Recent work
 

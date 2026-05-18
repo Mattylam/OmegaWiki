@@ -1,6 +1,16 @@
 # Wiki Index
 
 papers:
+  - slug: don-retrieve-navigate-distilling-enterprise-knowledge
+    title: "Don't Retrieve, Navigate: Distilling Enterprise Knowledge into Navigable Agent Skills for QA and RAG"
+    tags: [rag, agent-navigation, knowledge-distillation, hierarchical-clustering, enterprise-qa, corpus-navigation, agentic-rag]
+    importance: 3
+    domain: NLP
+  - slug: reasoningbank-scaling-agent-self-evolving-reasoning
+    title: "ReasoningBank: Scaling Agent Self-Evolving with Reasoning Memory"
+    tags: [llm-agents, agent-memory, self-evolution, failure-learning, test-time-scaling, experience-distillation, continual-learning]
+    importance: 4
+    domain: NLP
   - slug: am-more-pointwise-pairwise-revealing-position
     title: "Am I More Pointwise or Pairwise? Revealing Position Bias in Rubric-Based LLM-as-a-Judge"
     tags: [llm-as-judge, position-bias, rubric-based-evaluation, debiasing, balanced-permutation]
@@ -9,6 +19,31 @@ papers:
   - slug: bert-judge-robust-alternative-lexical-methods
     title: "BERT-as-a-Judge: A Robust Alternative to Lexical Methods for Efficient Reference-Based LLM Evaluation"
     tags: [llm-evaluation, reference-based-evaluation, encoder-based-evaluation, llm-as-judge, lexical-evaluation, bert, synthetic-data]
+    importance: 3
+    domain: NLP
+  - slug: automatic-prompt-optimization-techniques-exploring-potential
+    title: "Automatic Prompt Optimization Techniques: Exploring the Potential for Synthetic Data Generation"
+    tags: [prompt-optimization, synthetic-data, data-free, systematic-review, medical-ai]
+    importance: 2
+    domain: NLP
+  - slug: prorefine-inference-time-prompt-refinement-textual
+    title: "ProRefine: Inference-Time Prompt Refinement with Textual Feedback"
+    tags: [prompt-optimization, inference-time, textual-feedback, reasoning, agentic-loop, dynamic-prompt-refinement]
+    importance: 3
+    domain: NLP
+  - slug: what-lost-synthetic-evaluation
+    title: "What Has Been Lost with Synthetic Evaluation?"
+    tags: [synthetic-data, benchmark-validity, evaluation, difficulty, llm-generated-data, reading-comprehension]
+    importance: 3
+    domain: NLP
+  - slug: generate-evaluate-iterate-synthetic-data-human
+    title: "Generate, Evaluate, Iterate: Synthetic Data for Human-in-the-Loop Refinement of LLM Judges"
+    tags: [synthetic-data, llm-as-judge, human-in-the-loop, judge-refinement, borderline-case-generation, evaluation]
+    importance: 3
+    domain: NLP
+  - slug: intent-based-prompt-calibration-enhancing-prompt
+    title: "Intent-based Prompt Calibration: Enhancing prompt optimization with synthetic boundary cases"
+    tags: [prompt-optimization, synthetic-data, boundary-case-synthesis, intent-calibration, llm]
     importance: 3
     domain: NLP
   - slug: closer-look-claim-decomposition
@@ -91,13 +126,54 @@ papers:
     tags: [neurosymbolic, llm-symbolic-solver, z3, smt-lib, policy-compliance, tool-augmented-agents]
     importance: 3
     domain: NLP
+  - slug: task-facet-learning-structured-approach-prompt
+    title: "Task Facet Learning: A Structured Approach to Prompt Optimization"
+    tags: [prompt-optimization, structured-prompts, facet-learning, batch-aggregation, sectioned-prompts, llm, clustering]
+    importance: 4
+    domain: NLP
+  - slug: system-prompt-optimization-meta-learning
+    title: "System Prompt Optimization with Meta-Learning"
+    tags: [prompt-optimization, meta-learning, bilevel-optimization, llm, system-prompt, cross-task-transfer]
+    importance: 4
+    domain: NLP
   - slug: when-ais-judge-ais-rise-agent
     title: "When AIs Judge AIs: The Rise of Agent-as-a-Judge Evaluation for LLMs"
     tags: [llm-as-judge, agent-as-a-judge, multi-agent-evaluation, survey, evaluation-methodology]
     importance: 4
     domain: NLP
+  - slug: sok-agentic-skills-beyond-tool-use
+    title: "SoK: Agentic Skills -- Beyond Tool Use in LLM Agents"
+    tags: [agentic-skills, skill-library, skill-taxonomy, llm-agents, security, survey, sok]
+    importance: 3
+    domain: NLP
+  - slug: taming-actor-observer-asymmetry-agents-dialectical
+    title: "Taming Actor-Observer Asymmetry in Agents via Dialectical Alignment"
+    tags: [multi-agent, cognitive-bias, fault-attribution, dialectical-reasoning, rl-alignment, actor-observer-asymmetry, grpo, llm-agents, perspective-invariant-reasoning]
+    importance: 3
+    domain: NLP
+  - slug: measuring-agents-production
+    title: "Measuring Agents in Production"
+    tags: [llm-agents, production, empirical-study, survey, reliability, human-in-the-loop, evaluation, prompt-engineering, agent-deployment]
+    importance: 4
+    domain: NLP
 
 concepts:
+  - slug: hierarchical-corpus-navigation
+    title: "Hierarchical Corpus Navigation"
+    tags: [rag, agent-navigation, knowledge-distillation, hierarchical-clustering, agentic-rag, enterprise-qa]
+    maturity: emerging
+  - slug: agent-reasoning-memory
+    title: "Agent Reasoning Memory"
+    tags: [llm-agents, agent-memory, self-evolution, failure-learning, continual-learning, experience-distillation]
+    maturity: emerging
+  - slug: synthetic-evaluation-quality-gap
+    title: "Synthetic Evaluation Quality Gap"
+    tags: [synthetic-data, benchmark-validity, evaluation-difficulty, llm-generated-data, ranking-preservation]
+    maturity: emerging
+  - slug: synthetic-boundary-case-optimization
+    title: "Synthetic Boundary Case Optimization"
+    tags: [prompt-optimization, synthetic-data, boundary-cases, adversarial-generation]
+    maturity: emerging
   - slug: atomic-fact-decomposition
     title: "Atomic Fact Decomposition"
     tags: [factuality, reference-based-evaluation, decomposition, nli]
@@ -142,6 +218,10 @@ concepts:
     title: "LLM-as-a-Verifier"
     tags: [llm-evaluation, verification, test-time-scaling, reward-model, logprob-scoring, criteria-decomposition]
     maturity: emerging
+  - slug: meta-prompt-optimization
+    title: "Meta-Prompt Optimization"
+    tags: [prompt-optimization, meta-learning, bilevel-optimization, cross-task-transfer]
+    maturity: emerging
   - slug: neurosymbolic-llm-verification
     title: "Neurosymbolic LLM Verification"
     tags: [neurosymbolic, llm-symbolic-solver, faithful-reasoning, formal-verification]
@@ -158,22 +238,48 @@ concepts:
     title: "Reflective Prompt Evolution"
     tags: [prompt-optimization, evolutionary-search, llm-reflection, sample-efficiency, compound-ai-system]
     maturity: emerging
+  - slug: sectioned-prompt-optimization
+    title: "Sectioned Prompt Optimization"
+    tags: [prompt-optimization, structured-prompts, facet-learning, batch-aggregation, llm]
+    maturity: emerging
   - slug: self-preference-bias
     title: "Self-Preference Bias"
     tags: [llm-as-judge, evaluation-reliability, bias]
     maturity: active
+  - slug: shot-dark-problem
+    title: "Shot in the Dark Problem"
+    tags: [rag, agentic-rag, information-retrieval, llm-agents, failure-modes]
+    maturity: emerging
   - slug: skill-memory
     title: "Skill Memory"
     tags: [continual-learning, llm-agents, memory-based-rl, externalized-memory, prompt-engineering]
+    maturity: emerging
+  - slug: agentic-skill-design-patterns
+    title: "Agentic Skill Design Patterns"
+    tags: [agentic-skills, llm-agents, system-design, skill-library, taxonomy]
     maturity: emerging
   - slug: teleprompters
     title: "Teleprompters"
     tags: [prompt-optimization, compilation, llm-programming, dspy]
     maturity: emerging
+  - slug: actor-observer-asymmetry
+    title: "Actor-Observer Asymmetry"
+    tags: [cognitive-bias, multi-agent, fault-attribution, llm-agents, role-playing, reliability]
+    maturity: emerging
+  - slug: production-agent-deployment-patterns
+    title: "Production Agent Deployment Patterns"
+    tags: [llm-agents, production, deployment, reliability, empirical, human-in-the-loop, prompt-engineering, agent-design]
+    maturity: emerging
 
 topics:
 
 people:
+  - slug: jiawei-han
+    tags: [data-mining, knowledge-graphs, information-extraction, nlp, llm-agents]
+    affiliation: "University of Illinois Urbana-Champaign (UIUC)"
+  - slug: amit-sharma
+    tags: [causal-inference, llm, prompt-optimization, machine-learning]
+    affiliation: "Microsoft Research India"
   - slug: christopher-potts
     tags: [nlp, computational-linguistics, llm-programming, foundation-models]
     affiliation: "Stanford University"
@@ -198,6 +304,9 @@ people:
   - slug: siyuan-guo
     tags: [llm-agents, case-based-reasoning, data-science-automation]
     affiliation: "Jilin University"
+  - slug: sung-ju-hwang
+    tags: [meta-learning, llm, prompt-optimization, deep-learning]
+    affiliation: "KAIST / DeepAuto.ai"
 
 ideas:
   - slug: decomposed-reference-based-golden-evaluator
@@ -216,6 +325,48 @@ ideas:
 experiments:
 
 claims:
+  - slug: curated-skills-outperform-self-generated-skills
+    title: "Curated agentic skills outperform self-generated skills in agent benchmarks"
+    tags: [agentic-skills, skill-library, evaluation, continual-learning]
+    status: weakly_supported
+    confidence: 0.6
+    domain: NLP
+  - slug: llm-agent-navigating-hierarchical-pre-compiled
+    title: "LLM agents navigating a hierarchical pre-compiled corpus skill tree outperform passive dense retrieval and agentic RAG on enterprise QA"
+    tags: [rag, agent-navigation, hierarchical-clustering, enterprise-qa, corpus-navigation]
+    status: weakly_supported
+    confidence: 0.6
+    domain: NLP
+  - slug: distilling-reasoning-strategies-failed-successful-agent
+    title: "Distilling generalizable reasoning strategies from both failed and successful agent experiences outperforms success-only or raw trajectory memory"
+    tags: [agent-memory, failure-learning, self-evolution, continual-learning, llm-agents, experience-distillation]
+    status: weakly_supported
+    confidence: 0.7
+    domain: NLP
+  - slug: inference-time-agentic-prompt-refinement-textual
+    title: "Inference-time agentic prompt refinement with textual feedback outperforms zero-shot baselines on multi-step reasoning without training"
+    tags: [prompt-optimization, inference-time, textual-feedback, reasoning, agentic-loop]
+    status: weakly_supported
+    confidence: 0.6
+    domain: NLP
+  - slug: llm-generated-evaluation-benchmarks-sacrifice-difficulty
+    title: "LLM-generated evaluation benchmarks sacrifice difficulty for validity compared to human-authored counterparts"
+    tags: [synthetic-data, benchmark-validity, evaluation, difficulty, llm-generated-data]
+    status: weakly_supported
+    confidence: 0.65
+    domain: NLP
+  - slug: synthetic-borderline-case-generation-effective-hand
+    title: "Synthetic borderline case generation is as effective as hand-crafted data for LLM judge criteria refinement and is preferred by practitioners"
+    tags: [synthetic-data, llm-as-judge, borderline-cases, human-in-the-loop, evaluation, judge-refinement]
+    status: weakly_supported
+    confidence: 0.6
+    domain: NLP
+  - slug: synthetic-boundary-case-generation-during-prompt
+    title: "Synthetic boundary case generation during prompt optimization reduces annotated data requirements and improves calibration over standard meta-prompt methods"
+    tags: [prompt-optimization, synthetic-data, boundary-case-synthesis, llm, few-shot]
+    status: weakly_supported
+    confidence: 0.6
+    domain: NLP
   - slug: bootstrapping-produces-better-demonstrations-than-hand-written
     title: "Bootstrapping produces better few-shot demonstrations than hand-written examples"
     tags: [bootstrapping, few-shot-learning, prompt-optimization, automated-example-selection]
@@ -300,6 +451,12 @@ claims:
     status: weakly_supported
     confidence: 0.55
     domain: NLP
+  - slug: meta-learned-system-prompts-transfer-unseen
+    title: "Meta-learned system prompts transfer to unseen tasks with reduced test-time adaptation cost"
+    tags: [prompt-optimization, meta-learning, bilevel-optimization, cross-task-transfer, llm]
+    status: weakly_supported
+    confidence: 0.6
+    domain: NLP
   - slug: minimal-modification-smt-repair-enables-actionable-compliance-diagnostics
     title: "Extending SMT compliance verification with a minimal-modification repair step converts binary verdicts into actionable compliance diagnostics that localise which specific facts drive non-compliance"
     tags: [neurosymbolic, llm-symbolic-solver, smt, compliance-verification, repair, minimal-modification]
@@ -333,6 +490,24 @@ claims:
   - slug: rubric-based-pointwise-scoring-is-implicitly-multi-choice
     title: "Rubric-based pointwise LLM-judge scoring is implicitly a multi-choice task and inherits position bias across score options"
     tags: [llm-as-judge, position-bias, rubric-based-evaluation]
+    status: weakly_supported
+    confidence: 0.65
+    domain: NLP
+  - slug: production-agents-rely-simple-prompt-based
+    title: "Production agents rely on simple prompt-based designs and human evaluation over automated methods"
+    tags: [llm-agents, production, empirical, human-in-the-loop, prompt-engineering, evaluation, reliability, survey]
+    status: supported
+    confidence: 0.8
+    domain: NLP
+  - slug: actor-observer-asymmetry-llm-agents
+    title: "Actor-Observer Asymmetry induces perspective-inconsistent fault attribution in multi-agent LLM systems"
+    tags: [multi-agent, cognitive-bias, fault-attribution, llm-agents, role-playing, reliability]
+    status: weakly_supported
+    confidence: 0.65
+    domain: NLP
+  - slug: sectioned-prompts-batch-aggregated-facet-feedback
+    title: "Sectioned prompts optimized via clustered-minibatch facet feedback outperform monolithic prompt optimization and human-tuned prompts"
+    tags: [prompt-optimization, structured-prompts, facet-learning, batch-aggregation, llm, clustering]
     status: weakly_supported
     confidence: 0.65
     domain: NLP
@@ -430,6 +605,9 @@ foundations:
     domain: NLP
 
 terminology:
+  - slug: auxiliary-llm
+    title: "Auxiliary LLM"
+    domain: NLP
   - slug: brittle
     title: "Brittle"
     domain: NLP

@@ -128,3 +128,5 @@ The privacy-preserving query rewriting prompt for PUPA evolves over GEPA iterati
 - [[fine-tuning]]
 - Authors: [[lakshya-agrawal]], [[omar-khattab]], [[christopher-potts]], [[matei-zaharia]]
 - Related work: [[dspy-compiling-declarative-language-model-calls]] (DSPy framework GEPA integrates with)
+- Orthogonal axis: [[system-prompt-optimization-meta-learning]] (MetaSPO — meta-learns task-agnostic system prompts across tasks; GEPA reflects across iterations within one task; combination unexplored)
+- Orthogonal axis: [[task-facet-learning-structured-approach-prompt]] (UniPrompt — aggregates feedback across input clusters within one task to produce sectioned prompts; GEPA aggregates across optimization iterations on a Pareto frontier)

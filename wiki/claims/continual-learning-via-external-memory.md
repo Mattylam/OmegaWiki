@@ -1,19 +1,23 @@
 ---
 title: "Continual learning for LLM agents can be achieved via external memory evolution without parameter updates"
 slug: continual-learning-via-external-memory
-status: weakly_supported
-confidence: 0.65
+status: supported
+confidence: 0.75
 tags: [continual-learning, llm-agents, memory-based-learning, frozen-llm, deployment-time-learning]
 domain: NLP
-source_papers: [memento-skills-let-agents-design-agents]
+source_papers: [memento-skills-let-agents-design-agents, reasoningbank-scaling-agent-self-evolving-reasoning]
 evidence:
   - source: memento-skills-let-agents-design-agents
     type: supports
     strength: strong
     detail: "Memento-Skills achieves +26.2% and +116.2% relative improvements on GAIA and HLE over 3 reflective-learning rounds with zero LLM parameter updates; skill library grows from 5 atomic skills to 41 (GAIA) / 235 (HLE); +13.7/+20.8 pp over static-library ablation."
+  - source: reasoningbank-scaling-agent-self-evolving-reasoning
+    type: supports
+    strength: strong
+    detail: "ReasoningBank achieves 48.8% WebArena success rate (vs ~28% no-memory baseline) and 34.2% relative gain over success-only baselines by iteratively distilling reasoning strategies from agent experience with frozen LLM; MaTTS further amplifies gains through test-time scaling."
 conditions: "Requires (a) structured task clusters where skills can generalise, (b) reliable feedback signal from environment to drive the Write step, (c) capable retrieval policy that optimises for execution success rather than surface similarity. Empirically validated on closed-domain benchmarks with ground-truth answers; open question whether it generalises to preference-based domains without fixed ground truth."
 date_proposed: 2026-04-13
-date_updated: 2026-04-13
+date_updated: 2026-04-24
 ---
 
 > [!abstract] Statement
@@ -23,6 +27,7 @@ date_updated: 2026-04-13
 
 **Supporting evidence:**
 - **[[memento-skills-let-agents-design-agents]]** (2026): formalises this as the Stateful Reflective Decision Process (SRDP); provides convergence guarantee (inherited from Memento 2, Thm. 8) for KL-regularised soft policy iteration over the Reflected MDP; demonstrates empirical gains of 26.2% (GAIA) and 116.2% (HLE) relative improvement across 3 rounds with frozen LLM; +13.7/+20.8 pp over static baseline.
+- **[[reasoningbank-scaling-agent-self-evolving-reasoning]]** (2025, Google Research): introduces ReasoningBank — reasoning strategy memory distilled from both success and failure trajectories. Achieves 48.8% WebArena success (vs ~28% no-memory baseline) and 34.2% relative gain over success-only baselines with frozen LLM backbone; further amplified by memory-aware test-time scaling (MaTTS).
 
 > [!info] Conditions and scope
 > The claim holds under the following preconditions:
